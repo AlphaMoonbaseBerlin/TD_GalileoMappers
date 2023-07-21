@@ -1,0 +1,13 @@
+{
+    "default": {
+        "Foo": "Bar",
+        "Number": 1234,
+        "Subdict": {
+            "x": 420,
+            "y": 69
+        }
+    },
+    "producition": {
+        "Foo": "Replaced"
+    }
+}
