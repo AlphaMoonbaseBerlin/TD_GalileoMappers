@@ -2,8 +2,8 @@
 Name : extMidiMapper
 Author : Wieland@AMB-ZEPH15
 Version : 0
-Build : 2
-Savetimestamp : 2023-07-21T22:31:07.033299
+Build : 3
+Savetimestamp : 2023-07-26T10:16:11.051492
 Saveorigin : Project.toe
 Saveversion : 2022.28040
 Info Header End'''
@@ -28,10 +28,14 @@ class extMidiMapper:
 		# The component to which this extension is attached
 		self.menuitems = ['StrMenu', 'Menu']
 		self.ownerComp = ownerComp
-		self.mappingTable = self.ownerComp.op('midiMap')
+		#self.mappingTable = self.ownerComp.op('midiMap')
 		self.Mapping = {}
 		self.FillMapping()
 
+	@property
+	def mappingTable(self):
+		return self.ownerComp.op("repo_maker").Repo
+	
 	def ClearTable(self):
 		self.mappingTable.clear(keepFirstRow=True)
 		self.ClearMapping()
@@ -98,5 +102,5 @@ class extMidiMapper:
 			learnRows = self.mappingTable.rows("Learn")
 			for r in learnRows:
 				rowIndex = r[0].row
-				op('midiMap')[rowIndex, 'chan'] = channel
-				op('midiMap')[rowIndex, 'index'] = index
+				self.mappingTable[rowIndex, 'chan'] = channel
+				self.mappingTable[rowIndex, 'index'] = index
