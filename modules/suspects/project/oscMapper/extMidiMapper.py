@@ -1,11 +1,9 @@
+
 '''Info Header Start
 Name : extMidiMapper
 Author : Wieland@AMB-ZEPH15
-Version : 0
-Build : 4
-Savetimestamp : 2023-07-21T22:41:30.796915
 Saveorigin : Project.toe
-Saveversion : 2022.28040
+Saveversion : 2022.32660
 Info Header End'''
 
 

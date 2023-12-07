@@ -1,11 +1,9 @@
+
 '''Info Header Start
 Name : extMidiMapper
 Author : Wieland@AMB-ZEPH15
-Version : 0
-Build : 3
-Savetimestamp : 2023-07-26T10:16:11.051492
 Saveorigin : Project.toe
-Saveversion : 2022.28040
+Saveversion : 2022.32660
 Info Header End'''
 """
 Extension classes enhance TouchDesigner components with python. An
