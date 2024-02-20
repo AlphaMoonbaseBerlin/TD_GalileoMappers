@@ -78,14 +78,19 @@ class extGalileoMapper:
 			mapping[channel].append(mapData)
 		return mapping
 			
-	def ApplyMapping(self, channel, value):
-		if channel in self.Mapping:
-			for mapData in self.Mapping[channel]:
-				newValue = tdu.remap(value[0], 0.0, 1.0, mapData['min'], mapData['max'])
-				if mapData['par'].style in self.menuitems:
-					mapData['par'].menuIndex = newValue
+	def ApplyMapping(self, channelName, value, prevValue):
+		for mapData in self.Mapping.get( channelName, [] ):
+			newRemappedValue = tdu.remap(value, 0.0, 1.0, mapData['min'], mapData['max'])
+			if self.ownerComp.par.Pickup.eval():
+				prevRemappedValue = tdu.remap(prevValue, 0.0, 1.0, mapData['min'], mapData['max'])
+				currentValue = mapData['par'].normVal
+				
+				if not( min(prevRemappedValue, newRemappedValue) <= currentValue <= max(prevRemappedValue, newRemappedValue)): 
 					return
-				mapData['par'].val = newValue
+			if mapData['par'].style in self.menuitems:
+				mapData['par'].menuIndex = newRemappedValue
+				return
+			mapData['par'].val = newRemappedValue
 	
 	def Learn(self, channel):
 		if self.ownerComp.par.Learn:
